@@ -1,0 +1,41 @@
+<!--pages/first-page/first-page.wxml-->
+<view class="page-background">
+</view>
+
+
+<view class="custom-navbar">
+  <image src="./images/箭头2.png" class="back-icon" bindtap="navigateBack"></image>
+  <text class="navbar-title">日常生活能力评估</text>
+</view>
+
+
+<view class="container">
+<view class="rounded-rectangle">
+  <view class="image-and-text">
+    <image src="./images/Home.png" class="background-image"></image>
+    <text class="text-1">共10题/预计耗时3分钟</text>
+  </view>
+</view>
+
+<view class="quiz-container">
+  <scroll-view scroll-y class="scroll-view">
+    <view class="quiz" wx:for="{{questions}}" wx:key="index">
+  <view class="question-number">第 {{index + 1}} 题</view>
+  <view class="question">{{item.question}}</view>
+  <view class="options" data-question="{{index}}">
+    <template is="optionsList" data="{{options: item.options, questionIndex: index, selectedOptions: selectedOptions}}"></template>
+  </view>
+</view>
+ <button class="submit-button" bindtap="submitQuiz">完成测试</button>
+</scroll-view>
+  </view>
+</view>
+
+<template name="optionsList">
+  <view class="option" wx:for="{{options}}" wx:key="optionIndex" bindtap="selectOption" data-question="{{questionIndex}}" data-option="{{optionIndex}}" wx:if="{{!isSelected(questionIndex, optionIndex)}}">
+    {{indexToLetter(optionIndex)}}. {{options[optionIndex]}}
+  </view>
+  <view class="option selected" wx:for="{{options}}" wx:key="optionIndex" bindtap="selectOption" data-question="{{questionIndex}}" data-option="{{optionIndex}}" wx:if="{{isSelected(questionIndex, optionIndex)}}">
+    {{indexToLetter(optionIndex)}}. {{options[optionIndex]}}
+  </view>
+</template>

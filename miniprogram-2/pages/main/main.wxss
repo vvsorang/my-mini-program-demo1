@@ -1,0 +1,168 @@
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.nav-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top:100px;
+
+}
+
+.nav-button,
+.nav-button-selected {
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.11px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-button-selected {
+  color: #000000;
+}
+
+.nav-button-selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  height: 3px;
+  background-color: #1c7cff;
+  transform: translateX(-50%);
+}
+
+.content-area {
+  display: none;
+  width: 100%;
+  height: 800px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+
+.content-area.active {
+  display: block;
+}
+
+.white-box {
+  display: flex;
+  background-color: rgba(240, 240, 240, 0.3);
+  border: 1px solid #ffffff;
+  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.1);
+  height:80px;
+  border-radius: 12px;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.inline-image {
+  width: 60px;
+  height: 80px;
+  margin-right: 10px; /* 为图片和文本之间添加一些间距 */
+}
+
+
+.box-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1;
+ width:60%;
+  margin-left: 20px;
+}
+
+.box-title {
+  font-family: STSongti-SC-Regular;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.85);
+  letter-spacing: 0.11px;
+}
+
+.box-tag {
+  display: inline-flex;
+  background-color: #e5fefd;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 3px 5px;
+  opacity: 0.83;
+  font-family: PingFangSC-Regular;
+  font-size: 10px;
+  color: #0091ff;
+  letter-spacing: 0.06px;
+  line-height: 13px;
+}
+
+.box-start-button-wrapper {
+  width: 35%;
+  margin-right:30px;
+  flex-shrink: 0;
+}
+
+.box-start-button {
+  background-color: #7199f7;
+  border-radius: 12px;
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #ffffff;
+  letter-spacing: 0.09px;
+  padding: 5px 5px;
+  border: none;
+  width: 50%;
+  height: 100%;
+}
+
+.box-start-button-hover {
+  background-color: #5685d7;
+}
+
+.bottom-placeholder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  bottom: 20px; /* 添加这一行使其距离底部保持20px */
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.tab-text {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+
+

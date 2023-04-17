@@ -1,0 +1,60 @@
+<!--pages/test-choose/test-choose.wxml-->
+<view class="page-background">
+</view>
+
+
+<view class="custom-navbar">
+  <image src="./images/箭头2.png" class="back-icon" bindtap="navigateBack"></image>
+  <text class="navbar-title"></text>
+</view>
+
+
+<view class="container">
+<view class="rounded-rectangle">
+  <view class="image-and-text">
+    <image src="./images/Home.png" class="background-image"></image>
+ 
+  </view>
+</view>
+</view>
+
+<view class="parent-container">
+  <view class="text-container-1">
+  <text class="text-1">日常生活能力评估</text>
+  <text class="text-2">身体健康</text>
+  </view>
+  <view class="text-container-2">
+  <text class="text-3">已有55人完成测试</text>
+  <text class="text-4">剩余20人未完成</text>
+  </view>
+    <view class="rectangle"></view>
+  <view class="button-container" style="margin-top: 10px;">
+    <view class="tab-button" bindtap="switchTab" data-tab="1">
+      <text class="button-text {{currentTab === '1' ? 'selected' : ''}}">测试介绍</text>
+      <view class="line {{currentTab === '1' ? 'selected' : ''}}"></view>
+    </view>
+    <view class="tab-button" bindtap="switchTab" data-tab="2">
+      <text class="button-text {{currentTab === '2' ? 'selected' : ''}}">人员名单</text>
+  <view class="line {{currentTab === '2' ? 'selected' : ''}}"></view>
+    </view>
+  </view>
+  <view class="content-container" style="margin-top: 20px;">
+    <view wx:if="{{currentTab === '1'}}" class="content-box1">
+      <text>    日常生活能力评估（BADL量表）是一种用于评估老年人或患有慢性疾病的人日常生活能力的评估工具，主要用于评估个体是否有自理能力和生活质量。它由10个项目组成，包括个人卫生、穿衣、进食、如厕、床椅转移、行走、上下楼梯、洗澡、穿衣和控制大小便等方面，能够有效地评估被评估者的生活能力水平。该评估工具广泛应用于医疗、康复、社区服务等领域，是老年人和患者日常生活能力评估的常用工具之一。</text>
+    </view>
+
+    <view wx:if="{{currentTab === '2'}}" class="content-box2">
+      <view class="search-container">
+    <input type="text" placeholder="搜索人名" class="search-input" bindinput="onInput"></input>
+  </view>
+  <view class="names-container">
+  <view wx:for="{{names}}" wx:key="*this" class="name-item">
+    <view class="id">{{index + 1}}.</view>
+    <view class="name">{{item}}</view>
+    <button class="start-button" hover-class="start-button-hover" bindtap="goToTest1">开始测试</button>
+  </view>
+</view>
+  </view>
+    </view>
+
+  </view>

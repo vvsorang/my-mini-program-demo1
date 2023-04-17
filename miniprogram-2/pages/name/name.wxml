@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="search-section">
+    <input class="search-input" placeholder="搜索" bindinput="onSearchInput" />
+  </view>
+
+  <view class="name-list-section">
+  <view class="name-item" wx:for="{{nameList}}" wx:key="name">
+    <view class="name-item-inner">
+      <text class="name-number">{{index + 1}}</text>
+      <text class="name-text">{{item}}</text>
+
+        <button class="result-button" bindtap="onViewResult">查看结果</button>
+        <image class="delete-icon" src="./images/delete.png" bindtap="onDelete" data-index="{{index}}" />
+    </view>
+  </view>
+</view>
+  <view class="add-button-section">
+    <button class="add-button" bindtap="onAddButtonClick">+</button>
+  </view>
+</view>
+
+<view class="input-box-section" wx:if="{{showInputBox}}">
+  <input class="input-box" bindinput="onInput" />
+  <button class="confirm-button" bindtap="onConfirm">确认</button>
+</view>
+
+<view class="bottom-placeholder">
+    <view class="tab-item" bindtap="onTabItemClick1">
+      <image class="tab-icon" src="./images/qunti1.png" />
+      <text class="tab-text">综合评估</text>
+    </view>
+    <view class="tab-item" bindtap="onTabItemClick2">
+      <image class="tab-icon" src="./images/ceshi1.png" />
+      <text class="tab-text">测试</text>
+    </view>
+    <view class="tab-item" >
+      <image class="tab-icon" src="./images/danren2.png" />
+      <text class="tab-text">个人评估</text>
+    </view>
+  </view>
+
+
+

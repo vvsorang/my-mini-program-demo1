@@ -1,0 +1,73 @@
+<!--pages/first-page/first-page.wxml-->
+<view class="page-background">
+</view>
+
+
+<view class="custom-navbar">
+  <image src="./images/箭头.png" class="back-icon" bindtap="navigateBack"></image>
+  <text class="navbar-title">测试结果</text>
+</view>
+
+
+<view class="rounded-rectangle"></view>
+
+<view class="parent-container">
+  <view class="text-container-1">
+  <text class="text-1">测试报告</text>
+  <text class="text-2">日常生活能力  轻度受损</text>
+  </view>
+   <view class="chart-container">
+  <view class="bar" style="height: 40%;">
+    <text class="index-label">0-40</text>
+  </view>
+  <view class="bar" style="height: 60%;">
+    <text class="index-label">45-60</text>
+  </view>
+  <view class="bar bar-selected" style="height: 80%;">
+    <text class="label">轻度</text>
+    <text class="index-label">65-95</text>
+  </view>
+  <view class="bar" style="height: 100%;">
+    <text class="index-label">100</text>
+  </view>
+   </view>
+   <view class="text-container-2">
+    <text class="text-3">你的评分为80分，以下为一些建议:</text>
+    <scroll-view class="scroll-view" scroll-y="true">
+     <view class="scroll-content">
+      <text class="text-4">
+    1.定期进行体检：及时发现和处理潜在的健康问题，以减少对日常生活的影响。
+    2.保持活动：适当的运动可以增强体力、提高平衡感和灵活性，预防跌倒。
+    3.保持良好的生活习惯：养成规律作息、健康饮食和适度锻炼的生活习惯，有助于身体健康。
+    4.保持社交互动：与家人、朋友和邻居保持联系，参加社区活动，以减轻孤独感和抑郁。
+    5.制定生活计划：为每天的活动制定计划，有助于提高执行能力和记忆力。
+    6.使用辅助设备：如助听器、拐杖或轮椅等，可以帮助提高日常生活的自理能力。
+      </text>
+     <view class="scroll-button" bindtap="onScrollButtonClick">▼</view>
+    </view>
+  </scroll-view>
+  </view>
+
+   
+</view>
+
+<button class="retest-button" bindtap="onRetestButtonClick" hover-class="retest-button-hover" hover-stay-time="200">再测一次</button>
+
+<view class="bottom-icons-container">
+  <view class="icon-container">
+    <image class="icon" src="./images/save.png" bindtap="onSaveImage"></image>
+    <text class="icon-text">保存图片</text>
+  </view>
+  <view class="icon-container">
+    <image class="icon" src="./images/wechat.png" bindtap="onShareWechat"></image>
+    <text class="icon-text">微信好友</text>
+  </view>
+  <view class="icon-container">
+    <image class="icon" src="./images/pyq.png" bindtap="onShareMoments"></image>
+    <text class="icon-text">微信朋友圈</text>
+  </view>
+  <view class="icon-container">
+    <image class="icon" src="./images/qq.png" bindtap="onShareQQ"></image>
+    <text class="icon-text">QQ好友</text>
+  </view>
+</view>
