@@ -42,44 +42,27 @@ Page({
   indexToLetter: function indexToLetter(index) {
     return String.fromCharCode(65 + index);
   },
-  selectOption(event) {
-    const questionIndex = event.currentTarget.dataset.question;
-    const optionIndex = event.detail.value;
-    const selectedOptions = this.data.selectedOptions || [];
-    const score = optionIndex == 0 ? 0 : optionIndex == 1 ? 5 : 10; // 根据选项的索引计算得分
-    selectedOptions[questionIndex] = {
-      optionIndex: optionIndex,
-      score: score
-    };
+  selectOption: function selectOption(event) {
+    console.log('选项被点击了');
+    var questionIndex = event.currentTarget.dataset.question;
+    var optionIndex = event.currentTarget.dataset.option;
+    var selectedOptions = Object.assign({}, this.data.selectedOptions);
+    if (selectedOptions[questionIndex] === optionIndex) {
+      delete selectedOptions[questionIndex];
+    } else {
+      selectedOptions[questionIndex] = optionIndex;
+    }
     this.setData({
       selectedOptions: selectedOptions
     });
   },
   
-  
-  calculateTotalScore() {
-    const selectedOptions = this.data.selectedOptions || [];
-    let totalScore = 0;
-  
-    for (let option of selectedOptions) {
-      if (option) {
-        totalScore += option.score;
-      }
-    }
-  
-    return totalScore;
+  isSelected: function isSelected(questionIndex, optionIndex) {
+    return this.data.selectedOptions[questionIndex] === optionIndex;
   },
-  
-  isSelected(questionIndex, optionIndex) {
-    const selectedOptions = this.data.selectedOptions || [];
-    return selectedOptions[questionIndex] === optionIndex;
-  },
-
   submitQuiz: function submitQuiz() {
-   
-    
     wx.navigateTo({
-      url: `/pages/test-result/test-result`
+      url: '/pages/test-result/test-result'
     });
     console.log('测试完成');
   },

@@ -20,7 +20,7 @@
 
 <view class="parent-container">
   <view class="text-container-1">
-  <text class="text-1">日常生活能力评估</text>
+  <text class="text-1">体适能评估</text>
   <text class="text-2">身体健康</text>
   </view>
   <view class="text-container-2">
@@ -40,12 +40,12 @@
   </view>
   <view class="content-container" style="margin-top: 20px;">
     <view wx:if="{{currentTab === '1'}}" class="content-box1">
-      <text>    日常生活能力评估（BADL量表）是一种用于评估老年人或患有慢性疾病的人日常生活能力的评估工具，主要用于评估个体是否有自理能力和生活质量。它由10个项目组成，包括个人卫生、穿衣、进食、如厕、床椅转移、行走、上下楼梯、洗澡、穿衣和控制大小便等方面，能够有效地评估被评估者的生活能力水平。该评估工具广泛应用于医疗、康复、社区服务等领域，是老年人和患者日常生活能力评估的常用工具之一。</text>
+      <text>    体适能评估是通过对个体身体各项指标的测试和测量，来全面、客观、科学地评价个体身体健康水平的一种方法。这种评估方法可以通过对身体结构、功能、代谢及心理等方面的测试，了解个体身体健康水平的现状，以及存在的健康问题和潜在风险，为制定科学、合理的健康促进计划提供参考。</text>
     </view>
 
     <view wx:if="{{currentTab === '2'}}" class="content-box2">
       <view class="search-container">
-    <input type="text" placeholder="搜索人名" class="search-input" bindinput="onInput"></input>
+    <input  class="search-input"  placeholder="搜索人名"bindinput="onInput"></input>
   </view>
   <view class="names-container">
   <view wx:for="{{names}}" wx:key="*this" class="name-item">

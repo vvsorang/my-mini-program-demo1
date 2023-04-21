@@ -41,6 +41,12 @@
           "pathName": "pages/name/name",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/total/total",
+          "pathName": "pages/total/total",
+          "query": "",
+          "scene": null
         }
       ]
     }

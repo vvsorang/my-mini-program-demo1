@@ -14,7 +14,7 @@
       <view class="box-tag">身体健康</view>
     </view>
     <view class="box-start-button-wrapper">
-      <button class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+      <button class="box-start-button" bindtap="onStartTest1" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
 
   </view>
   </view>
@@ -25,7 +25,7 @@
       <view class="box-tag">身体健康</view>
     </view>
     <view class="box-start-button-wrapper">
-    <button class="box-start-button" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+    <button class="box-start-button" bindtap="onStartTest2"hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
   </view>
   </view>
   <view class="white-box">
@@ -63,46 +63,6 @@
   
 </view>
 
-<view class="{{currentTab === 1 ? 'content-area active' : 'content-area'}}">
-  <!-- Button 2 content goes here -->
-  <view class="bottom-placeholder">
-    <view class="tab-item" bindtap="onTabItemClick">
-      <image class="tab-icon" src="/assets/icon1.png" />
-      <text class="tab-text">选项1</text>
-    </view>
-    <view class="tab-item" bindtap="onTabItemClick">
-      <image class="tab-icon" src="/assets/icon2.png" />
-      <text class="tab-text">选项2</text>
-    </view>
-    <view class="tab-item" bindtap="onTabItemClick3">
-      <image class="tab-icon" src="/assets/icon3.png" />
-      <text class="tab-text">选项3</text>
-    </view>
-  </view>
-
-
-
-</view>
-
-<view class="{{currentTab === 2 ? 'content-area active' : 'content-area'}}">
-  <!-- Button 3 content goes here -->
-
-  <view class="bottom-placeholder">
-    <view class="tab-item" bindtap="onTabItemClick">
-      <image class="tab-icon" src="/assets/icon1.png" />
-      <text class="tab-text">综合评估</text>
-    </view>
-    <view class="tab-item" bindtap="onTabItemClick">
-      <image class="tab-icon" src="/assets/icon2.png" />
-      <text class="tab-text">测试</text>
-    </view>
-    <view class="tab-item" bindtap="onTabItemClick3">
-      <image class="tab-icon" src="/assets/icon3.png" />
-      <text class="tab-text">个人评估</text>
-    </view>
-  </view>
-
-</view>
 
 <view class="bottom-placeholder">
     <view class="tab-item" bindtap="onTabItemClick1">

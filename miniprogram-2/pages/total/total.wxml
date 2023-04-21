@@ -1,2 +1,22 @@
 <!--pages/total/total.wxml-->
-<text>pages/total/total.wxml</text>
+<view class="questionnaire">
+  <view class="questionnaire-header">请选择您的性别</view>
+  <view class="options">
+    <view class="option" bindtap="selectOption" data-option="0">
+  <view class="option-radio {{isSelected(0) ? 'selected' : ''}}"></view>
+  <text class="option-text">选项一</text>
+</view>
+<view class="option" bindtap="selectOption" data-option="1">
+  <view class="option-radio {{isSelected(1) ? 'selected' : ''}}"></view>
+  <text class="option-text">选项二</text>
+</view>
+<view class="option" bindtap="selectOption" data-option="2">
+  <view class="option-radio {{isSelected(2) ? 'selected' : ''}}"></view>
+  <text class="option-text">选项三</text>
+</view>
+
+  </view>
+  <view class="button" bindtap="submitQuiz">提交</view>
+</view>
+
+

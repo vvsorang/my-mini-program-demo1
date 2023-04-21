@@ -5,7 +5,7 @@
 
 <view class="custom-navbar">
   <image src="./images/箭头2.png" class="back-icon" bindtap="navigateBack"></image>
-  <text class="navbar-title">体适能评估</text>
+  <text class="navbar-title">日常生活能力评估</text>
 </view>
 
 
@@ -23,11 +23,8 @@
   <view class="question-number">第 {{index + 1}} 题</view>
   <view class="question">{{item.question}}</view>
   <view class="options" data-question="{{index}}">
-  <radio-group bindchange="selectOption" data-question="{{index}}">
     <template is="optionsList" data="{{options: item.options, questionIndex: index, selectedOptions: selectedOptions}}"></template>
-  </radio-group>
-</view>
-
+  </view>
 </view>
  <button class="submit-button" bindtap="submitQuiz">完成测试</button>
 </scroll-view>
@@ -35,8 +32,10 @@
 </view>
 
 <template name="optionsList">
-  <radio class="option" wx:for="{{options}}" wx:key="optionIndex" value="{{optionIndex}}" data-option="{{optionIndex}}" checked="{{isSelected(questionIndex, optionIndex)}}">
-   {{item}}
-  </radio>
+  <view class="option" wx:for="{{options}}" wx:key="optionIndex" catchtap="selectOption" data-question="{{questionIndex}}" data-option="{{optionIndex}}" wx:if="{{!isSelected(questionIndex, optionIndex)}}">
+    {{indexToLetter(optionIndex)}}. {{item}}
+  </view>
+  <view class="option selected" wx:for="{{options}}" wx:key="optionIndex" catchtap="selectOption" data-question="{{questionIndex}}" data-option="{{optionIndex}}" wx:if="{{isSelected(questionIndex, optionIndex)}}">
+    {{indexToLetter(optionIndex)}}. {{item}}
+  </view>
 </template>
-
