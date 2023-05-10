@@ -1,23 +1,62 @@
-"use strict";
-
 // pages/main/main.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab: 0
+    currentTab: 0,
+    nameList: getApp().globalData.nameList
   },
-  onStartTest1: function onStartTest1() {
+
+  checkAllData1NonZero: function () {
+    const nameList = getApp().globalData.nameList;
+    for (let i = 0; i < nameList.length; i++) {
+      console.log(nameList[i].data1);
+      if (nameList[i].data1 == 0) {
+        return false;
+      }
+    }
+    return true;
+  },
+  checkAllData2NonZero: function () {
+    for (let i = 0; i < this.data.nameList.length; i++) {
+      if (this.data.nameList[i].data2 == 0) {
+        return false;
+      }
+    }
+    return true;
+  },
+  checkAllData3NonZero: function () {
+    for (let i = 0; i < this.data.nameList.length; i++) {
+      if (this.data.nameList[i].data3 == 0) {
+        return false;
+      }
+    }
+    return true;
+  },
+  checkAllData4NonZero: function () {
+    for (let i = 0; i < this.data.nameList.length; i++) {
+      if (this.data.nameList[i].data4 == 0) {
+        return false;
+      }
+    }
+    return true;
+  },
+  checkAllData5NonZero: function () {
+    for (let i = 0; i < this.data.nameList.length; i++) {
+      if (this.data.nameList[i].data5 == 0) {
+        return false;
+      }
+    }
+    return true;
+  },
+  onStartTest: function(event) {
+    const testId = event.currentTarget.id;
     wx.navigateTo({
-      url: '/pages/test-choose/test-choose'
+      url: '/pages/test-choose/test-choose?testId=' + testId
     });
   },
-  onStartTest2: function onStartTest2() {
-    wx.navigateTo({
-      url: '/pages/test-choose/test-choose'
-    });
-  },
+  
   onButton1Click: function onButton1Click() {
     this.setData({
       currentTab: 0
@@ -36,9 +75,8 @@ Page({
   onTabItemClick1: function onTabItemClick1(event) {
     console.log("Tab item 1 clicked");
     wx.navigateTo({
-      url: '/pages/tatal/tatal'
+      url: '/pages/total/total'
     });
-    // 在这里处理点击事件，例如切换页面等
   },
 
   onTabItemClick3: function onTabItemClick3(event) {

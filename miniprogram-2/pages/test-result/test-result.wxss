@@ -1,5 +1,4 @@
-/* pages/test-result/test-result.wxss */
-/* pages/first-page/first-page.wxss */
+
 .page-background {
   background: rgba(141, 129, 129, 0.1); /* 将这个值更改为您喜欢的颜色 */
   width: 100%;
@@ -156,7 +155,7 @@ text-align: center;
   text-align: center;
 }
 .scroll-view {
-  height: 150px;
+  height: 220px;
 }
 
 .scroll-content {

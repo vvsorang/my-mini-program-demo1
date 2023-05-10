@@ -1,4 +1,4 @@
-<!--pages/first-page/first-page.wxml-->
+
 <view class="page-background">
 </view>
 
@@ -13,35 +13,80 @@
 
 <view class="parent-container">
   <view class="text-container-1">
-  <text class="text-1">测试报告</text>
-  <text class="text-2">日常生活能力  轻度受损</text>
+  <text class="text-1">{{item.name}}的测试报告</text>
+  <text class="text-2">{{
+    testId == '1' ? '体适能' :
+    testId == '2' ? '日常生活活动能力' :
+    testId == '3' ? '认知能力' :
+    testId == '4' ? '感知觉与沟通能力' :
+    testId == '5' ? '营养' : ''
+  }} {{selectedBar == 0 ? '重度受损' : (selectedBar == 1 ? '中度受损' : (selectedBar == 2 ? '轻度受损' : '能力完好'))}}</text>
   </view>
-   <view class="chart-container">
-  <view class="bar" style="height: 40%;">
+  <view class="chart-container">
+  <view class="bar{{selectedBar == 0 ? ' bar-selected' : ''}}" style="height: 40%;">
+    <text wx:if="{{selectedBar == 0}}" class="label">重度</text>
     <text class="index-label">0-40</text>
+    
   </view>
-  <view class="bar" style="height: 60%;">
+  <view class="bar{{selectedBar == 1 ? ' bar-selected' : ''}}" style="height: 60%;">
+    <text wx:if="{{selectedBar == 1}}" class="label">中度</text>
     <text class="index-label">45-60</text>
+   
   </view>
-  <view class="bar bar-selected" style="height: 80%;">
-    <text class="label">轻度</text>
+  <view class="bar{{selectedBar == 2 ? ' bar-selected' : ''}}" style="height: 80%;">
+    <text wx:if="{{selectedBar == 2}}" class="label">轻度</text>
     <text class="index-label">65-95</text>
   </view>
-  <view class="bar" style="height: 100%;">
+  <view class="bar{{selectedBar == 3 ? ' bar-selected' : ''}}" style="height: 100%;">
+    <text wx:if="{{selectedBar == 3}}" class="label">完好</text>
     <text class="index-label">100</text>
   </view>
-   </view>
+</view>
+
+
    <view class="text-container-2">
-    <text class="text-3">你的评分为：{{totalScore}}分，以下为一些建议:</text>
+    <text class="text-3">评分为：{{totalScore}}分，以下为一些建议:</text>
     <scroll-view class="scroll-view" scroll-y="true">
      <view class="scroll-content">
       <text class="text-4">
-    1.定期进行体检：及时发现和处理潜在的健康问题，以减少对日常生活的影响。
-    2.保持活动：适当的运动可以增强体力、提高平衡感和灵活性，预防跌倒。
-    3.保持良好的生活习惯：养成规律作息、健康饮食和适度锻炼的生活习惯，有助于身体健康。
-    4.保持社交互动：与家人、朋友和邻居保持联系，参加社区活动，以减轻孤独感和抑郁。
-    5.制定生活计划：为每天的活动制定计划，有助于提高执行能力和记忆力。
-    6.使用辅助设备：如助听器、拐杖或轮椅等，可以帮助提高日常生活的自理能力。
+        {{ (testId == 1 && selectedBar == 0) ? 
+  '1. 重视营养摄入：重度受损的患者往往营养摄入不足，需要及时调整饮食，增加蛋白质和能量的摄入。可以请营养师根据患者的情况制定个性化的饮食计划，以保证患者的营养需求得到满足。\n\n'+
+  '2. 注意日常护理：重度受损的患者需要进行全天候的监护，包括定时翻身、换洗床单被套、清洁患者口腔和皮肤等。同时，要关注患者的排便和排尿情况，及时更换尿布或清理便器。\n\n'+
+  '3. 给予心理支持：重度受损的患者可能因为身体的状况和长期卧床等因素而感到孤独和无助，需要给予他们充分的关爱和心理支持，可以适当进行心理疏导，帮助他们缓解情绪。\n\n'+
+  '4. 管理疼痛：重度受损的患者常常会出现疼痛症状，需要及时给予药物缓解疼痛，同时也要注意防止药物过量或滥用导致不良反应。\n\n'+
+  '5. 定期复查：重度受损的患者需要定期进行身体各项指标的检查，包括生命体征、血液检查、心电图等，以及对病情的评估和调整治疗方案。\n\n'+
+  '6. 做好家庭照护：对于家庭有能力照顾的患者，家庭成员需要接受相关的培训和指导，了解患者的病情和护理要求，做好患者的日常护理工作。如果需要，请寻求专业护理人员的帮助。'
+  : 
+    (testId == 1 && selectedBar == 1) ?  '1. 保持营养均衡：中度受损的患者需要适当增加蛋白质和能量的摄入，以促进身体康复。建议医生请营养师根据患者的情况制定个性化的饮食计划，以保证患者的营养需求得到满足。\n\n'+
+  '2.定期锻炼：中度受损的患者需要进行适当的体育锻炼，以提高身体机能和肌肉力量。医生可以根据患者的身体状况，制定个性化的锻炼计划，并定期监测患者的锻炼效果。\n\n'+
+  '3. 控制药物使用：中度受损的患者需要避免滥用药物，遵医嘱使用药物，并定期进行检查以监测药物副作用。医生应定期评估患者的药物使用情况，并在必要时调整治疗方案。\n\n'+
+  '4. 注意日常护理：中度受损的患者需要进行全天候的监护，包括定时翻身、换洗床单被套、清洁患者口腔和皮肤等。同时，要关注患者的排便和排尿情况，及时更换尿布或清理便器。\n\n'+
+  '5. 给予心理支持：中度受损的患者可能会因为身体的状况和长期卧床等因素而感到焦虑、孤独和无助，需要给予他们充分的关爱和心理支持，可以适当进行心理疏导，帮助他们缓解情绪。\n\n'+
+  '6. 定期复查：中度受损的患者需要定期进行身体各项指标的检查，包括生命体征、血液检查、心电图等，以及对病情的评估和调整治疗方案。医生需要与患者保持良好的沟通，并对患者的病情进行及时的调整和处理。'
+  : 
+    (testId == 1 && selectedBar == 2) ? '1. 适当锻炼身体：轻度受损的体适能患者需要适当地锻炼身体，可以进行一些轻度的有氧运动，例如散步、慢跑、骑自行车等。同时也可以进行一些力量训练，以增强肌肉力量。但需要避免过度运动，以免加重损伤。\n\n'+
+  '2.饮食均衡：患者需要注意饮食均衡，适当增加蛋白质的摄入量，有利于身体的修复和恢复。\n\n'+
+  '3. 休息充足：患者需要保证充足的休息和睡眠时间，以便身体得到充分的修复和恢复。\n\n'+
+  '4. 定期复查：患者需要定期到医院进行复查，以便及时发现并治疗潜在的健康问题。\n\n'+
+  '5. 避免过度疲劳：患者需要避免过度疲劳，避免进行过度的体力活动和工作，以免加重损伤。\n\n'+
+  '6. 聆听医生建议：患者需要聆听医生的建议，按照医生的指导进行治疗和康复，以便更好地恢复身体健康。': 
+    (testId == 1 && selectedBar == 3) ? '1.有规律地进行身体锻炼：身体锻炼可以增强心肺功能、提高肌肉力量和耐力。老年人可以适量地进行步行、慢跑、骑自行车、游泳等有氧运动，也可以进行力量训练。锻炼应该有计划、有规律，量力而行。\n\n'+'2.饮食健康：饮食健康对于维持良好体适能非常重要。老年人应该注意饮食均衡，适量摄入蛋白质、脂肪和碳水化合物，并多摄入蔬菜、水果和全谷类食物，以提供足够的营养。\n\n'+'3.控制体重：体重控制是维持良好体适能的重要因素。老年人应该注意控制体重，保持适当的体重水平。\n\n'+'4.定期体检：老年人应该定期进行体检，以便及时发现和治疗潜在的健康问题。\n\n'+'5.睡眠充足：良好的睡眠有助于身体恢复和修复，老年人应该保证充足的睡眠时间，并保持一个健康的睡眠环境。\n\n'+'6.心理健康：心理健康对于维持良好体适能同样非常重要。老年人应该保持积极的心态，参加社交活动，保持兴趣爱好，以及定期咨询心理医生等措施，有助于提高心理健康水平。' :
+    (testId == 2 && selectedBar == 0) ? '1. 定期评估生活能力......6. 使用辅助工具' :
+    (testId == 2 && selectedBar == 1) ? '1. 定期进行生活能力训练......6. 激发内在潜能' :
+    (testId == 2 && selectedBar == 2) ? '1. 保持生活习惯的稳定......6. 提高自信心' :
+    (testId == 2 && selectedBar == 3) ? '1. 维持健康的生活方式......6. 适应生活节奏' :
+    (testId == 3 && selectedBar == 0) ? '1. 监测认知能力......6. 提高沟通能力' :
+    (testId == 3 && selectedBar == 1) ? '1. 定期进行认知训练......6. 增强自主学习能力' :
+    (testId == 3 && selectedBar == 2) ? '1. 增强记忆力......6. 扩展知识面' :
+    (testId == 3 && selectedBar == 3) ? '1. 保持良好的学习习惯......6. 发挥创造力' :
+    (testId == 4 && selectedBar == 0) ? '1. 加强感知觉训练......6. 提高沟通技巧' :
+    (testId == 4 && selectedBar == 1) ? '1. 增强感知觉能力......6. 保持情绪稳定' :
+    (testId == 4 && selectedBar == 2) ? '1. 提高感知觉敏锐度......6. 学会倾听' :
+    (testId == 4 && selectedBar == 3) ? '1. 保持良好的感知觉状态......6. 发展多样化的兴趣爱好' :
+    (testId == 5 && selectedBar == 0) ? '1. 定期评估营养状况......6. 营养干预措施' :
+(testId == 5 && selectedBar == 1) ? '1. 增加营养密度......6. 保持消化系统健康' :
+(testId == 5 && selectedBar == 2) ? '1. 平衡饮食结构......6. 提高饮食品质' :
+(testId == 5 && selectedBar == 3) ? '1. 保持良好的饮食习惯......6. 注重膳食多样性' : '' }}
       </text>
      <view class="scroll-button" bindtap="onScrollButtonClick">▼</view>
     </view>
@@ -53,7 +98,7 @@
 
 <button class="retest-button" bindtap="onRetestButtonClick" hover-class="retest-button-hover" hover-stay-time="200">再测一次</button>
 
-<view class="bottom-icons-container">
+<!--<view class="bottom-icons-container">
   <view class="icon-container">
     <image class="icon" src="./images/save.png" bindtap="onSaveImage"></image>
     <text class="icon-text">保存图片</text>
@@ -70,4 +115,4 @@
     <image class="icon" src="./images/qq.png" bindtap="onShareQQ"></image>
     <text class="icon-text">QQ好友</text>
   </view>
-</view>
+</view>-->

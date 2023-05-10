@@ -12,20 +12,32 @@
 <view class="container">
 <view class="rounded-rectangle">
   <view class="image-and-text">
-    <image src="./images/Home.png" class="background-image"></image>
- 
+    <image  wx:if="{{testId == '1'}}" src="./images/1.png" class="background-image"></image>
+    <image  wx:elif="{{testId == '2'}}" src="./images/2.png" class="background-image"></image>
+    <image  wx:elif="{{testId == '3'}}" src="./images/3.png" class="background-image"></image>
+    <image  wx:elif="{{testId == '4'}}" src="./images/4.png" class="background-image"></image>
+    <image  wx:elif="{{testId == '5'}}" src="./images/5.png" class="background-image"></image>
   </view>
 </view>
 </view>
 
 <view class="parent-container">
   <view class="text-container-1">
-  <text class="text-1">体适能评估</text>
-  <text class="text-2">身体健康</text>
+<text wx:if="{{testId == '1'}}" class="text-1">体适能评估</text>
+<text wx:elif="{{testId == '2'}}" class="text-1">日常生活活动能力评估</text>
+<text wx:elif="{{testId == '3'}}" class="text-1">认知能力评估</text>
+<text wx:elif="{{testId == '4'}}" class="text-1">感知觉与沟通能力评估</text>
+<text wx:elif="{{testId == '5'}}" class="text-1">营养评估</text>
+<text wx:if="{{testId == '1'}}" class="text-2">身体健康</text>
+<text wx:elif="{{testId == '2'}}" class="text-2">身体健康</text>
+<text wx:elif="{{testId == '3'}}" class="text-2">心理健康</text>
+<text wx:elif="{{testId == '4'}}" class="text-2">心理健康</text>
+<text wx:elif="{{testId == '5'}}" class="text-2">生理健康</text>
   </view>
   <view class="text-container-2">
-  <text class="text-3">已有55人完成测试</text>
-  <text class="text-4">剩余20人未完成</text>
+  <text class="text-3">已有{{completedCount}}人完成测试</text>
+  <text class="text-4">剩余{{uncompletedCount}}人未完成</text>
+
   </view>
     <view class="rectangle"></view>
   <view class="button-container" style="margin-top: 10px;">
@@ -40,7 +52,16 @@
   </view>
   <view class="content-container" style="margin-top: 20px;">
     <view wx:if="{{currentTab === '1'}}" class="content-box1">
-      <text>    体适能评估是通过对个体身体各项指标的测试和测量，来全面、客观、科学地评价个体身体健康水平的一种方法。这种评估方法可以通过对身体结构、功能、代谢及心理等方面的测试，了解个体身体健康水平的现状，以及存在的健康问题和潜在风险，为制定科学、合理的健康促进计划提供参考。</text>
+      <text wx:if="{{testId == '1'}}" class="text-5">体适能评估是通过对个体身体各项指标的测试和测量，来全面、客观、科学地评价个体身体健康水平的一种方法。这种评估方法可以通过对身体结构、功能、代谢及心理等方面的测试，了解个体身体健康水平的现状，以及存在的健康问题和潜在风险，为制定科学、合理的健康促进计划提供参考。</text>
+      <text wx:elif="{{testId == '2'}}" class="text-5">日常生活活动能力评估（Activities of Daily Living, ADL）是评估个体在日常生活中自理能力的一种方法。该评估通常包括基本生活技能（BADL）和仪表性日常生活活动两个方面（IADL）。BADL主要评估个体基本的生活自理能力，如进食、穿衣、洗澡、如厕和行动能力等；IADL则评估个体独立完成一些日常生活中较为复杂和独立的任务的能力，如购物、烹饪、使用电话、使用交通工具、管理药物等。ADL评估可以帮助评估个体的独立生活能力，从而为老年人、残疾人或者患有慢性疾病的人提供有效的康复措施和社会支持服务。</text>
+     <text wx:elif="{{testId == '3'}}" class="text-5">认知能力评估是一种用于评估个体智力水平、认知能力和心理健康的方法。它可以帮助医生、心理学家和教育工作者识别和解决个体可能存在的认知问题和学习障碍，以及提供对应的干预和治疗建议。通常，认知能力评估包括对个体进行认知和行为测试，以及观察和分析个体的表现和行为。这些测试可以涵盖多个领域，例如注意力、记忆、语言、思维、感知、空间能力等。评估的结果可以帮助医生和专业人员制定个性化的干预计划和治疗方案，以及为个体提供必要的支持和帮助。</text>
+     <text wx:elif="{{testId == '4'}}" class="text-5">感知觉与沟通能力评估是指对一个人在感知和沟通方面的能力进行评估，主要包括听觉、视觉、嗅觉、味觉、触觉等感知能力和语言沟通、社交沟通、情感沟通等沟通能力。这些能力对一个人的生活、工作和社交交往都非常重要，因此对于有需要的人群，进行感知觉与沟通能力的评估可以帮助他们更好地了解自己的能力和局限性，并且在实际生活中做出相应的调整和改善。评估的具体方法和工具可以根据不同的情况和需要进行选择，包括面试、问卷调查、心理测量等等。</text>
+     <text wx:elif="{{testId == '5'}}" class="text-5">营养评估是评估老年人营养状况的重要手段，包括饮食摄入、体重、身体成分、血液生化指标等方面。随着年龄的增长，老年人可能会面临各种营养问题，如营养不良、肥胖、慢性疾病等。对老年人进行营养评估，有助于及时发现和纠正营养不平衡，提高他们的生活质量和健康水平。</text>
+
+
+
+
+     <!--<text>    体适能评估是通过对个体身体各项指标的测试和测量，来全面、客观、科学地评价个体身体健康水平的一种方法。这种评估方法可以通过对身体结构、功能、代谢及心理等方面的测试，了解个体身体健康水平的现状，以及存在的健康问题和潜在风险，为制定科学、合理的健康促进计划提供参考。</text>-->
     </view>
 
     <view wx:if="{{currentTab === '2'}}" class="content-box2">
@@ -48,10 +69,11 @@
     <input  class="search-input"  placeholder="搜索人名"bindinput="onInput"></input>
   </view>
   <view class="names-container">
-  <view wx:for="{{names}}" wx:key="*this" class="name-item">
+  <view wx:for="{{names}}" wx:key="index" class="name-item">
     <view class="id">{{index + 1}}.</view>
-    <view class="name">{{item}}</view>
-    <button class="start-button" hover-class="start-button-hover" bindtap="goToTest1">开始测试</button>
+    <view class="name">{{item.name}}</view>
+    <button wx:if="{{item[testDataKey] == 0}}" class="start-button" hover-class="start-button-hover" bindtap="goToTest1" data-index="{{index}}">开始测试</button>
+  <button wx:elif="{{item[testDataKey] != 0}}" class="start-button-alternate" hover-class="start-button-alternate-hover" hover-stay-time="200" bindtap="goToTest1" data-index="{{index}}">再测一次</button>
   </view>
 </view>
   </view>

@@ -277,6 +277,9 @@
 }
 
 .start-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 10px;
   height: 20px;
   margin-left: 10px;
@@ -295,3 +298,21 @@
   background-color: #577acf;
 }
 
+.start-button-alternate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 20px;
+  background: rgba(113, 153, 247, 0.25);
+  border-radius: 12px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #2461EE;
+  letter-spacing: 0.09px;
+  /* 在这里添加其他样式属性 */
+}
+.start-button-alternate-hover {
+  background: rgba(113, 153, 247, 0.4);
+  /* 在这里添加其他 hover 状态的样式属性 */
+}

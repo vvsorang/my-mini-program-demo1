@@ -1,22 +1,67 @@
 <!--pages/total/total.wxml-->
-<view class="questionnaire">
-  <view class="questionnaire-header">请选择您的性别</view>
-  <view class="options">
-    <view class="option" bindtap="selectOption" data-option="0">
-  <view class="option-radio {{isSelected(0) ? 'selected' : ''}}"></view>
-  <text class="option-text">选项一</text>
-</view>
-<view class="option" bindtap="selectOption" data-option="1">
-  <view class="option-radio {{isSelected(1) ? 'selected' : ''}}"></view>
-  <text class="option-text">选项二</text>
-</view>
-<view class="option" bindtap="selectOption" data-option="2">
-  <view class="option-radio {{isSelected(2) ? 'selected' : ''}}"></view>
-  <text class="option-text">选项三</text>
+<view class="custom-navbar">
+  <view class="nav-buttons-container">
+    <button class="{{currentTab === 0 ? 'nav-button-selected' : 'nav-button'}}" bindtap="onButton1Click">各项评估</button>
+    <button class="{{currentTab === 1 ? 'nav-button-selected' : 'nav-button'}}" bindtap="onButton2Click">失能评估</button>
+  </view>
 </view>
 
-  </view>
-  <view class="button" bindtap="submitQuiz">提交</view>
+
+<view class="{{currentTab === 0 ? 'content-area active' : 'content-area'}}">
+<view class="container1">
+	<view class="title">
+		<view wx:if="{{!isMainChartDisplay}}" class="back-btn" bindtap="backToMainChart">返回</view>
+		{{chartTitle}}
+	</view>
+    <canvas canvas-id="columnCanvas" class="canvas" bindtouchstart="touchHandler1"></canvas>
+    <view style="text-align:center">点击数据每一项查看详情</view>
+    <scroll-view scroll-y="{{true}}" style="height: 370px;" class="scroll-view-container">
+      <!-- 当 isMainChartDisplay 为 true 时显示未完成评估的人名 -->
+      <view wx:if="{{isMainChartDisplay}}" wx:for="{{unfinishedNames}}" wx:for-item="group" wx:key="group.title" class="group">
+        <text class="group-title">{{group.title}}（可点击跳转至测试页面）</text>
+        <view class="name-container" wx:for="{{group.names}}" wx:for-item="name" wx:key="name">
+          <button class="name-btn" hover-class="name-btn-hover" hover-stay-time="100" bindtap="onNameClick1"data-name="{{name}}" data-group-title="{{group.title}}">{{name}}</button>
+        </view>
+      </view>
+      
+      <!-- 当 isMainChartDisplay 为 false 时显示原来的内容 -->
+      <view wx:if="{{!isMainChartDisplay}}" wx:for="{{displayedNames}}" wx:for-item="group" wx:key="group.title" class="group">
+        <text class="group-title">{{group.title}}</text>
+        <view class="name-container" wx:for="{{group.names}}" wx:for-item="name" wx:key="name">
+          <button class="name-btn1">{{name}}</button>
+        </view>
+      </view>
+    </scroll-view>
 </view>
+</view>
+<view class="{{currentTab === 1? 'content-area active' : 'content-area'}}">
+<view class="container2" >
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler2"></canvas>
+    <text class="algorithm-description">失能风险算法：体适能 * 0.25 + 日常生活活动能力 * 0.25 + 认知能力 * 0.25 + 感知觉与沟通 * 0.15 + 营养* 0.1</text>
+    <scroll-view scroll-y="{{true}}" style="height: 300px;" class="scroll-view-container">
+    <view wx:for="{{disabilityNames}}" wx:for-item="category" wx:key="category.title" class="group">
+      <text class="group-title">{{category.title}}</text>
+      <view class="name-container" wx:for="{{category.names}}" wx:for-item="name" wx:key="name">
+        <button class="name-btn1" >{{name}}</button>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+</view>
+
+<view class="bottom-placeholder">
+    <view class="tab-item" >
+      <image class="tab-icon" src="./images/qunti2.png" />
+      <text class="tab-text">综合评估</text>
+    </view>
+    <view class="tab-item" bindtap="onTabItemClick2">
+      <image class="tab-icon" src="./images/ceshi1.png" />
+      <text class="tab-text">测试</text>
+    </view>
+    <view class="tab-item" bindtap="onTabItemClick3">
+      <image class="tab-icon" src="./images/danren1.png" />
+      <text class="tab-text">个人评估</text>
+    </view>
+  </view>
 
 

@@ -12,8 +12,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 80px; /* 包括状态栏和导航栏的高度 */
-  background-color: rgba(133, 165, 100, 0.19); 
+  height: 100px; /* 包括状态栏和导航栏的高度 */
+  background-color: rgba(133, 165, 100, 0); 
 
   display: flex;
   align-items: center;
@@ -35,8 +35,11 @@
 .navbar-title {
   font-size: 18px;
   color: black;
-  margin-left: 80px;
-  margin-top: 45px;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  
 }
 .container {
   display: flex;
@@ -142,7 +145,7 @@
 
 
 
-.option.selected {
+.option.selected{
   font-size: 13px;
   margin-bottom: 5px;
   background-color: lightblue;

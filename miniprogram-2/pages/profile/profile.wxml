@@ -1,0 +1,42 @@
+<!--pages/profile/profile.wxml-->
+<view class="custom-navbar">
+  <image src="./images/箭头2.png" class="back-icon" bindtap="navigateBack"></image>
+  <text class="navbar-title"></text>
+</view>
+
+<view class="outer-container">
+  <view>
+    <text class="text-1">{{item.name}}的健康评估报告</text>
+  </view>
+  <view class="container1">
+    <canvas canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+  </view>
+
+  <view class="rectangle-container">
+    <view class="row">
+      <view class="rectangle"  id="1" bindtap="onRectangleTap" hover-class="rectangle-hover"data-id="{{item.data1}}">
+        <image class="rectangle-image" src="./images/yundong.png" />
+        <text class="rectangle-text">体适能</text>
+      </view>
+      <view class="rectangle"  id="2" bindtap="onRectangleTap" hover-class="rectangle-hover"data-id="{{item.data2}}">
+        <image class="rectangle-image" src="./images/richang.png" />
+        <text class="rectangle-text">日常生活能力</text>
+      </view>
+      <view class="rectangle"  id="3"  bindtap="onRectangleTap" hover-class="rectangle-hover"data-id="{{item.data3}}">
+        <image class="rectangle-image" src="./images/renzhi.png" />
+        <text class="rectangle-text">认知能力</text>
+      </view>
+    </view>
+    <view class="row">
+      <view class="rectangle"  id="4"  bindtap="onRectangleTap" hover-class="rectangle-hover"data-id="{{item.data4}}">
+        <image class="rectangle-image" src="./images/ganjue.png" />
+        <text class="rectangle-text">感知觉与沟通</text>
+      </view>
+      <view class="rectangle"  id="5" bindtap="onRectangleTap" hover-class="rectangle-hover"data-id="{{item.data5}}">
+        <image class="rectangle-image" src="./images/yingyang.png" />
+        <text class="rectangle-text">营养水平</text>
+      </view>
+    </view>
+  </view>
+</view>
+

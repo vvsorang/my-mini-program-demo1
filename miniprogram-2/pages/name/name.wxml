@@ -4,24 +4,25 @@
   </view>
 
   <view class="name-list-section">
-  <view class="name-item" wx:for="{{nameList}}" wx:key="name">
+  <view class="name-item" wx:for="{{nameList}}" wx:key="index" data-name="{{item}}">
     <view class="name-item-inner">
       <text class="name-number">{{index + 1}}</text>
-      <text class="name-text">{{item}}</text>
-
-        <button class="result-button" bindtap="onViewResult">查看结果</button>
+     <text class="name-text">{{item.name}}</text>
+        <button class="result-button" bindtap="onViewResult" data-index="{{index}}">查看结果</button>
         <image class="delete-icon" src="./images/delete.png" bindtap="onDelete" data-index="{{index}}" />
     </view>
   </view>
 </view>
   <view class="add-button-section">
     <button class="add-button" bindtap="onAddButtonClick">+</button>
+    <button class="add-initial-data" bindtap="onLoadInitialData">加载初始数据</button>
   </view>
 </view>
 
 <view class="input-box-section" wx:if="{{showInputBox}}">
   <input class="input-box" bindinput="onInput" />
   <button class="confirm-button" bindtap="onConfirm">确认</button>
+
 </view>
 
 <view class="bottom-placeholder">

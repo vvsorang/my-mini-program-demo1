@@ -14,9 +14,11 @@
       <view class="box-tag">身体健康</view>
     </view>
     <view class="box-start-button-wrapper">
-      <button class="box-start-button" bindtap="onStartTest1" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
-
+      <button id="1" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
   </view>
+<!--同理以white-box为外框，完成日常生活活动能力评估-->
+
+
   </view>
   <view class="white-box">
     <image src="./images/richang.png" mode="aspectFill" class="inline-image"></image>
@@ -25,17 +27,17 @@
       <view class="box-tag">身体健康</view>
     </view>
     <view class="box-start-button-wrapper">
-    <button class="box-start-button" bindtap="onStartTest2"hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+      <button id="2" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
   </view>
   </view>
   <view class="white-box">
     <image src="./images/renzhi.png" mode="aspectFill" class="inline-image"></image>
     <view class="box-text">
-      <view class="box-title">认知能力评估评估</view>
+      <view class="box-title">认知能力评估</view>
       <view class="box-tag">心理健康</view>
     </view>
     <view class="box-start-button-wrapper">
-    <button class="box-start-button" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+      <button id="3" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
   </view>
   </view>
   <view class="white-box">
@@ -45,7 +47,7 @@
       <view class="box-tag">心理健康</view>
     </view>
     <view class="box-start-button-wrapper">
-    <button class="box-start-button" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+      <button id="4" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
   </view>
   </view>
   <view class="white-box">
@@ -56,13 +58,153 @@
       <view class="box-tag">生理健康</view>
     </view>
     <view class="box-start-button-wrapper">
-    <button class="box-start-button" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+      <button id="5" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
   </view>
   </view>
-
-  
 </view>
 
+<view class="{{currentTab === 1 ? 'content-area active' : 'content-area'}}">
+  <!-- 以下为已完成的框 -->
+  <block wx:if="{{checkAllData1NonZero()}}">
+    <view class="white-box">
+    <image src="./images/yundong.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">体适能评估</view>
+      <view class="box-tag">身体健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="1" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{checkAllData2NonZero()}}">
+    <view class="white-box">
+    <image src="./images/richang.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">日常生活活动能力评估</view>
+      <view class="box-tag">身体健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="2" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{checkAllData3NonZero()}}">
+    <view class="white-box">
+    <image src="./images/renzhi.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">认知能力评估</view>
+      <view class="box-tag">心理健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="3" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{checkAllData4NonZero()}}">
+    <view class="white-box">
+    <image src="./images/ganjue.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">感知觉与沟通能力评估</view>
+      <view class="box-tag">心理健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="4" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{checkAllData5NonZero()}}">
+    <view class="white-box">
+    <image src="./images/yingyang.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">营养评估</view>
+      <view class="box-tag">生理健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="5" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{!checkAllData1NonZero() && !checkAllData2NonZero() && !checkAllData3NonZero() && !checkAllData4NonZero() && !checkAllData5NonZero()}}">
+  <view class="white-box">
+    <view class="box-text">
+      <view class="box-title">暂时没有全部完成的评估</view>
+    </view>
+  </view>
+</block>
+
+</view>
+
+<view class="{{currentTab === 2 ? 'content-area active' : 'content-area'}}">
+  <!-- 以下为未完成的框 -->
+  <block wx:if="{{!checkAllData1NonZero()}}">
+    <view class="white-box">
+    <image src="./images/yundong.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">体适能评估</view>
+      <view class="box-tag">身体健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="1" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{!checkAllData2NonZero()}}">
+    <view class="white-box">
+    <image src="./images/richang.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">日常生活活动能力评估</view>
+      <view class="box-tag">身体健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="2" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{!checkAllData3NonZero()}}">
+    <view class="white-box">
+    <image src="./images/renzhi.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">认知能力评估</view>
+      <view class="box-tag">心理健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="3" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{!checkAllData4NonZero()}}">
+    <view class="white-box">
+    <image src="./images/ganjue.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">感知觉与沟通能力评估</view>
+      <view class="box-tag">心理健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="4" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{!checkAllData5NonZero()}}">
+    <view class="white-box">
+    <image src="./images/yingyang.png" mode="aspectFill" class="inline-image"></image>
+    <view class="box-text">
+      <view class="box-title">营养评估</view>
+      <view class="box-tag">生理健康</view>
+    </view>
+    <view class="box-start-button-wrapper">
+      <button id="5" class="box-start-button" bindtap="onStartTest" hover-class="box-start-button-hover" hover-stay-time="200">开始测试</button>
+  </view>
+  </view>
+  </block>
+  <block wx:if="{{checkAllData1NonZero() && checkAllData2NonZero() && checkAllData3NonZero() && checkAllData4NonZero() && checkAllData5NonZero()}}">
+  <view class="white-box">
+    <view class="box-text">
+      <view class="box-title">暂时没有未完成的评估</view>
+    </view>
+  </view>
+</block>
+</view>
 
 <view class="bottom-placeholder">
     <view class="tab-item" bindtap="onTabItemClick1">
